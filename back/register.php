@@ -36,59 +36,59 @@ if (isset($_POST['forminscription'])) {
    } else {
       $erreur = "Tous les champs doivent être complétés !";
    }
-   if (isset($pseudo)) {
-      echo $pseudo;
-   }
-   if (isset($mail)) {
-      echo $mail;
-   }
-   if (isset($mail2)) {
-      echo $mail2;
-   }
-   if (isset($erreur)) {
-      echo '<font color="red" class="err">' . $erreur . "</font>";
-   }
+   // if (isset($pseudo)) {
+   //    echo $pseudo;
+   // }
+   // if (isset($mail)) {
+   //    echo $mail;
+   // }
+   // if (isset($mail2)) {
+   //    echo $mail2;
+   // }
 }
 ?>
 
 <html>
 
 <head>
-   <title>TUTO PHP</title>
    <meta charset="utf-8">
    <link rel="stylesheet" href="../front/register.css">
    <link rel="stylesheet" href="../front/reset.css">
 </head>
 
 <body>
-   <h2 class="titre">Inscription</h2>
    <div class="login-box">
+      <h2 class="titre">Inscription</h2>
       <form method="POST" action="" id="form">
          <div class="user-box">
             <input type="text" id="pseuso" name="pseudo" required>
-            <label for="pseudo">Pseudo</label>
+            <label>Pseudo</label>
          </div>
          <div class="user-box">
             <input type="email" id="email" name="mail" required>
-            <label for="mail" class="text">E-Mail</label>
+            <label>E-Mail</label>
          </div>
          <div class="user-box">
             <input type="email" id="mail2" name="mail2" required>
-            <label for="mail2" class="text">Confirmation du mail</label>
+            <label>Confirmation du mail</label>
          </div>
          <div class="user-box">
             <input type="password" id="mdp" name="mdp" required>
-            <label for="mdp" class="text">Mot de passe</label>
+            <label>Mot de passe</label>
          </div>
          <div class="user-box">
             <input type="password" id="mdp2" name="mdp2" required>
-            <label for="mdp2" class="text">Confirmation du mot de passe</label>
+            <label>Confirmation du mot de passe</label>
          </div>
-         <input type="submit" id="bouton" name="forminscription" value="Je m'inscris">
+         <input type="submit" class="oui" name="forminscription" value="Je m'inscris">
          <div id="inscription">
             <a>Vous avez déjà un compte ?</a>
             <a href="./login.php" class="connectez">Connectez-vous !</a>
          </div>
+         <?php
+         if (isset($erreur)) {
+            echo '<font color="red" class="err">' . $erreur . "</font>";
+         } ?>
       </form>
    </div>
 </body>

@@ -31,7 +31,7 @@ if(isset($_POST['formconnexion'])) {
       <meta charset="utf-8">
    </head>
    <body>
-      <div align="center">
+      <div>
          <h2>Connexion</h2>
          <br /><br />
          <form method="POST" action="">
