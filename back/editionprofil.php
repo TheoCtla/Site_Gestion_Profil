@@ -45,7 +45,7 @@ if(isset($_SESSION['id'])) {
                <label>Modifier Pseudo :</label>
                <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br /><br />
                <label>Modifier Mail :</label>
-               <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['email']; ?>" /><br /><br />
+               <input type="email" name="newmail" placeholder="Mail" value="<?php echo $user['email']; ?>" /><br /><br />
                <label>Modifier Mot de passe :</label>
                <input type="password" name="newmdp1" placeholder="Mot de passe"/><br /><br />
                <label>Modifier Confirmation - mot de passe :</label>

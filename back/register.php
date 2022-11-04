@@ -1,21 +1,21 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=gobeboucollection', 'root','');
-if(isset($_POST['forminscription'])) {
+$bdd = new PDO('mysql:host=localhost;dbname=gobeboucollection', 'root', '');
+if (isset($_POST['forminscription'])) {
    $pseudo = htmlspecialchars($_POST['pseudo']);
    $mail = htmlspecialchars($_POST['mail']);
    $mail2 = htmlspecialchars($_POST['mail2']);
    $mdp = sha1($_POST['mdp']);
    $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+   if (!empty($_POST['pseudo']) and !empty($_POST['mail']) and !empty($_POST['mail2']) and !empty($_POST['mdp']) and !empty($_POST['mdp2'])) {
       $pseudolength = strlen($pseudo);
-      if($pseudolength <= 255) {
-         if($mail == $mail2) {
-            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+      if ($pseudolength <= 255) {
+         if ($mail == $mail2) {
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                $reqmail = $bdd->prepare("SELECT * FROM user WHERE email = ?");
                $reqmail->execute(array($mail));
                $mailexist = $reqmail->rowCount();
-               if($mailexist == 0) {
-                  if($mdp == $mdp2) {
+               if ($mailexist == 0) {
+                  if ($mdp == $mdp2) {
                      $insertmbr = $bdd->prepare("INSERT INTO user(pseudo, email, mdp) VALUES(?, ?, ?)");
                      $insertmbr->execute(array($pseudo, $mail, $mdp));
                   } else {
@@ -36,75 +36,61 @@ if(isset($_POST['forminscription'])) {
    } else {
       $erreur = "Tous les champs doivent être complétés !";
    }
+   if (isset($pseudo)) {
+      echo $pseudo;
+   }
+   if (isset($mail)) {
+      echo $mail;
+   }
+   if (isset($mail2)) {
+      echo $mail2;
+   }
+   if (isset($erreur)) {
+      echo '<font color="red" class="err">' . $erreur . "</font>";
+   }
 }
 ?>
 
 <html>
-   <head>
-      <title>TUTO PHP</title>
-      <meta charset="utf-8">
-   </head>
-   <body>
-      <div align="center">
-         <h2>Inscription</h2>
-         <br /><br />
-         <form method="POST" action="">
-            <table>
-               <tr>
-                  <td align="right">
-                     <label for="pseudo">Pseudo :</label>
-                  </td>
-                  <td>
-                     <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" />
-                  </td>
-               </tr>
-               <tr>
-                  <td align="right">
-                     <label for="mail">Mail :</label>
-                  </td>
-                  <td>
-                     <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
-                  </td>
-               </tr>
-               <tr>
-                  <td align="right">
-                     <label for="mail2">Confirmation du mail :</label>
-                  </td>
-                  <td>
-                     <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
-                  </td>
-               </tr>
-               <tr>
-                  <td align="right">
-                     <label for="mdp">Mot de passe :</label>
-                  </td>
-                  <td>
-                     <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
-                  </td>
-               </tr>
-               <tr>
-                  <td align="right">
-                     <label for="mdp2">Confirmation du mot de passe :</label>
-                  </td>
-                  <td>
-                     <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
-                  </td>
-               </tr>
-               <tr>
-                  <td></td>
-                  <td align="center">
-                     <br />
-                     <input type="submit" name="forminscription" value="Je m'inscris" />
-                     <a href="./login.php">Je me connecte</a>
-                    </td>
-               </tr>
-            </table>
-         </form>
-         <?php
-         if(isset($erreur)) {
-            echo '<font color="red">'.$erreur."</font>";
-         }
-         ?>
-      </div>
-   </body>
+
+<head>
+   <title>TUTO PHP</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="../front/register.css">
+   <link rel="stylesheet" href="../front/reset.css">
+</head>
+
+<body>
+   <h2 class="titre">Inscription</h2>
+   <div class="login-box">
+      <form method="POST" action="" id="form">
+         <div class="user-box">
+            <input type="text" id="pseuso" name="pseudo" required>
+            <label for="pseudo">Pseudo</label>
+         </div>
+         <div class="user-box">
+            <input type="email" id="email" name="mail" required>
+            <label for="mail" class="text">E-Mail</label>
+         </div>
+         <div class="user-box">
+            <input type="email" id="mail2" name="mail2" required>
+            <label for="mail2" class="text">Confirmation du mail</label>
+         </div>
+         <div class="user-box">
+            <input type="password" id="mdp" name="mdp" required>
+            <label for="mdp" class="text">Mot de passe</label>
+         </div>
+         <div class="user-box">
+            <input type="password" id="mdp2" name="mdp2" required>
+            <label for="mdp2" class="text">Confirmation du mot de passe</label>
+         </div>
+         <input type="submit" id="bouton" name="forminscription" value="Je m'inscris">
+         <div id="inscription">
+            <a>Vous avez déjà un compte ?</a>
+            <a href="./login.php" class="connectez">Connectez-vous !</a>
+         </div>
+      </form>
+   </div>
+</body>
+
 </html>
