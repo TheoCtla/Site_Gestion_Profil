@@ -26,25 +26,39 @@ if(isset($_POST['formconnexion'])) {
 }
 ?>
 <html>
-   <head>
-      <title>TUTO PHP</title>
-      <meta charset="utf-8">
-   </head>
-   <body>
-      <div>
-         <h2>Connexion</h2>
-         <br /><br />
-         <form method="POST" action="">
-            <input type="email" name="mailconnect" placeholder="Mail" />
-            <input type="password" name="mdpconnect" placeholder="Mot de passe" />
-            <br /><br />
-            <input type="submit" name="formconnexion" value="Se connecter !" />
-         </form>
-         <?php
-         if(isset($erreur)) {
-            echo '<font color="red">'.$erreur."</font>";
-         }
-         ?>
-      </div>
-   </body>
+<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="../front/register.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+</head>
+
+<body>
+   <img class="clouds" src="../IMG/bg.svg" />
+   <div class="signup">
+      <h2>Connexion</h2>
+      <h3>C'est simple et rapide !</h3>
+      <form class="form" method="POST">
+         <div class="textbox">
+            <input type="text" name="mailconnect" required />
+            <label>Email</label>
+            <span class="material-symbols-outlined"> email </span>
+         </div>
+         <div class="textbox">
+            <input type="password" name="mdpconnect" required />
+            <label>Mot de passe</label>
+            <span class="material-symbols-outlined"> key </span>
+         </div>
+         <p>
+            Tu n'as pas de compte ?
+            <a href="../back/register.php">Inscris-toi</a>
+         </p>
+
+         <button type="submit" name="formconnexion" >
+            Connecte-toi
+            <span class="material-symbols-outlined"> arrow_forward </span>
+         </button>
+      </form>
+   </div>
+</body>
 </html>
+

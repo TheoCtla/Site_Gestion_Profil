@@ -50,45 +50,53 @@ if (isset($_POST['forminscription'])) {
 
 <html>
 
+
 <head>
    <meta charset="utf-8">
    <link rel="stylesheet" href="../front/register.css">
-   <link rel="stylesheet" href="../front/reset.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
 </head>
 
 <body>
-   <div class="login-box">
-      <h2 class="titre">Inscription</h2>
-      <form method="POST" action="" id="form">
-         <div class="user-box">
-            <input type="text" id="pseuso" name="pseudo" required>
-            <label>Pseudo</label>
+   <img class="clouds" src="../IMG/bg.svg" />
+   <div class="signup">
+      <h2>Inscription</h2>
+      <h3>C'est simple et rapide !</h3>
+      <form class="form" method="POST">
+         <div class="textbox">
+            <input type="text" name="pseudo" required />
+            <label>Nom</label>
+            <span class="material-symbols-outlined"> account_circle </span>
          </div>
-         <div class="user-box">
-            <input type="email" id="email" name="mail" required>
-            <label>E-Mail</label>
+         <div class="textbox">
+            <input type="text" name="mail" required />
+            <label>Email</label>
+            <span class="material-symbols-outlined"> email </span>
          </div>
-         <div class="user-box">
-            <input type="email" id="mail2" name="mail2" required>
-            <label>Confirmation du mail</label>
+         <div class="textbox">
+            <input type="text" name="mail2" required />
+            <label>Confirmation Email</label>
+            <span class="material-symbols-outlined"> email </span>
          </div>
-         <div class="user-box">
-            <input type="password" id="mdp" name="mdp" required>
+         <div class="textbox">
+            <input type="password" name="mdp" required />
             <label>Mot de passe</label>
+            <span class="material-symbols-outlined"> key </span>
          </div>
-         <div class="user-box">
-            <input type="password" id="mdp2" name="mdp2" required>
-            <label>Confirmation du mot de passe</label>
+         <div class="textbox">
+            <input type="password" name="mdp2" required />
+            <label>Confirmation mot de passe</label>
+            <span class="material-symbols-outlined"> key </span>
          </div>
-         <input type="submit" class="oui" name="forminscription" value="Je m'inscris">
-         <div id="inscription">
-            <a>Vous avez déjà un compte ?</a>
-            <a href="./login.php" class="connectez">Connectez-vous !</a>
-         </div>
-         <?php
-         if (isset($erreur)) {
-            echo '<font color="red" class="err">' . $erreur . "</font>";
-         } ?>
+         <p>
+            Tu as déjà un compte ?
+            <a href="../back/login.php">Connecte-toi</a>
+         </p>
+
+         <button type="submit" name="forminscription">
+            Rejoin-nous
+            <span class="material-symbols-outlined"> arrow_forward </span>
+         </button>
       </form>
    </div>
 </body>
