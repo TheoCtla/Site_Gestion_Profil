@@ -28,7 +28,7 @@ if(isset($_POST['formconnexion'])) {
 <html>
 <head>
    <meta charset="utf-8">
-   <link rel="stylesheet" href="../front/register.css">
+   <link rel="stylesheet" href="../front/login.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
 </head>
 
