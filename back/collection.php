@@ -10,12 +10,31 @@
 </head>
 
 <body>
-    <!-- Modal Open Button -->
+
     <button id="open-btn">
         <p>Ajouter une carte</p>
     </button>
-    <button class="profil"></button>
-    <!-- Modal and Modal Background -->
+    <img class="clouds" src="../IMG/Twinkle Star-2.6s-1973px.svg">
+    <div class="signup">
+        <div class="form">
+            <h2>Profil de <?php echo $userinfo['pseudo']; ?></h2>
+            <span> Pseudo = <?php echo $userinfo['pseudo']; ?></span>
+            <span>Mail = <?php echo $userinfo['email']; ?>
+                <?php
+                if (isset($_SESSION['id']) and $userinfo['id'] == $_SESSION['id']) {
+                ?>
+                    <div class="textbox">
+                        <a href="collection.php">Voir ma collection</a>
+                        <a href="editionprofil.php">Editer mon profil</a>
+                        <a href="deconnexion.php">Se déconnecter</a>
+                    </div>
+        </div>
+    <?php
+                }
+    ?>
+    </div>
+    </div>
+
     <div id="modal-container">
         <div id="modal">
             <form action="collection.php" method="POST">
@@ -39,35 +58,35 @@
         </div>
     </div>
     <div class="parent"> <?php
-    session_start();
+                            session_start();
 
-    $bdd = new PDO('mysql:host=localhost;dbname=gobeboucollection', 'root', '');
-    
-    $test = $_SESSION['id'];
+                            $bdd = new PDO('mysql:host=localhost;dbname=gobeboucollection', 'root', '');
+
+                            $test = $_SESSION['id'];
 
 
-$sql = ('SELECT * FROM article WHERE user_id =' . $test . '');
-$requete = $bdd->query($sql);
-$article = $requete->fetchAll();
+                            $sql = ('SELECT * FROM article WHERE user_id =' . $test . '');
+                            $requete = $bdd->query($sql);
+                            $article = $requete->fetchAll();
 
-// Loop through the result set and create a card for each product
-foreach ($article as $article) {
-    // Get the product information from the result set
-    $productName = $article['name'];
-    $productDescription = $article['description'];
-    $productPrice = $article['price'];
-    $productImage = $article['image'];
-    // Create the HTML for the product card
-    echo "<div class='card'>";
-    echo "  <img src='$productImage' alt='Product Image'>";
-    echo "  <div class='card-body'>";
-    echo "    <h4 class='card-title'>$productName</h4>";
-    echo "    <p class='card-text'>$productDescription</p>";
-    echo "    <p class='card-text'>Prix : $productPrice</p>";
-    echo "  </div>";
-    echo "</div>";
-}
-?>
+                            // Loop through the result set and create a card for each product
+                            foreach ($article as $article) {
+                                // Get the product information from the result set
+                                $productName = $article['name'];
+                                $productDescription = $article['description'];
+                                $productPrice = $article['price'];
+                                $productImage = $article['image'];
+                                // Create the HTML for the product card
+                                echo "<div class='card'>";
+                                echo "  <img src='$productImage' alt='Product Image'>";
+                                echo "  <div class='card-body'>";
+                                echo "    <h4 class='card-title'>$productName</h4>";
+                                echo "    <p class='card-text'>$productDescription</p>";
+                                echo "    <p class='card-text'>Prix : $productPrice</p>";
+                                echo "  </div>";
+                                echo "</div>";
+                            }
+                            ?>
     </div>
 </body>
 

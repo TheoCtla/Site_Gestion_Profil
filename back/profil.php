@@ -29,7 +29,6 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
          if (isset($_SESSION['id']) and $userinfo['id'] == $_SESSION['id']) {
          ?>
             <div class="textbox">
-               <a href="collection.php">Voir ma collection</a>
                   <a href="editionprofil.php">Editer mon profil</a>
                   <a href="deconnexion.php">Se déconnecter</a>
                </div>
